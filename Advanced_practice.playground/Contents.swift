@@ -78,7 +78,7 @@
 //    return (a, b)
 //}
 //print(argLabel(firstNumber: 23, secondNumber: 34))
-//
+//Veriadic function
 //func veriadicFunc<N>(member : N...) {
 //    member.forEach { N in
 //        print(N)
@@ -165,6 +165,87 @@ func chooseSetupFunction(backward: Bool) -> (Int) -> Int {
 var startNumber = 4
 let towardsZero = chooseSetupFunction(backward: startNumber > 0)
 while (startNumber != 0) {
-    print(towardsZero)
+    print(startNumber)
     startNumber = towardsZero(startNumber)
 }
+
+//func callFun(_ : Int) -> Int {
+//     return 0
+//}
+//
+//callFun(23)
+
+// Closures
+var greeting = {
+    print("hello World")
+}
+greeting()
+
+//closures parameter
+
+var greet = { (name: String) in
+    print("Welcome, \(name)")
+}
+greet("tosif")
+
+var findDouble = { (number: Int) -> Int in
+    return number * 2
+}
+findDouble(45)
+
+//closures as function parameter
+
+func closerFunction(search: () -> (), no: Int) -> Int {
+    search()
+    return no
+}
+
+print(closerFunction(search: {print("Closures call")}, no: 23))
+
+//trailing closures
+//if function take closures as a last parameter
+
+func takeLunch(mesagge: String, search: () -> ()) {
+    print("Let's go for lunch, \(mesagge)")
+    search()
+}
+
+takeLunch(mesagge: "parth", search: {
+    print("In lunch have pizza")
+})
+takeLunch(mesagge: "ruchit") {
+    print("In lunch have burger")
+}
+
+//Autoclosure
+// require @autocloser
+//// using {}
+//takeLunch(mesagge: "harsh", search:{
+//  print("Hello World!")
+//})
+//
+//// without using {}
+//takeLunch(mesagge: "harsh",search: print("Hello World!"))
+////give error bcoz no add @autocloser
+
+func display(printValue: @autoclosure () -> ()) {
+    printValue()
+}
+display(printValue: print("Hello Autoclosure"))
+
+//Inferring Type From Context
+var name =  ["ruchit", "parth", "tosif"]
+var check = name.sorted(by: { s1, s2 in return s1 > s2})
+print(type(of: check),check)
+
+//Implicit Returns from Single-Expression Closures
+check = name.sorted(by: {s1, s2 in s1 < s2})
+print(check)
+
+//Shorthand Argument Names
+//$0, $1, $2
+check = name.sorted(by: { $0 > $1})
+print(check)
+
+//Operator Methods
+check =  name.sorted(by: <)
