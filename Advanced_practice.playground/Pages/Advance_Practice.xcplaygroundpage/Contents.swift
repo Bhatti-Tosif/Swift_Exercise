@@ -249,3 +249,46 @@ print(check)
 
 //Operator Methods
 check =  name.sorted(by: <)
+
+//Capture Value in Swift
+func doIncrement(forIncrement amount: Int) -> () -> Int {
+    var total = 0
+    print("doIncrement are called")
+    func incrementer() -> Int {
+        print("Increment function are called")
+        total += amount
+        return total
+    }
+    return incrementer
+}
+let incrementby20 = doIncrement(forIncrement: 20)
+print("Call 1 : ")
+print(incrementby20())
+print("Call 2 : ")
+print(incrementby20())
+print("Call 3 : ")
+print(incrementby20())
+
+let incrementby10 = doIncrement(forIncrement: 10)
+print(incrementby10())
+print(incrementby10())
+print(incrementby20())
+
+let alsoIncrementby10 = incrementby10
+print(alsoIncrementby10())
+
+//Auto Closures
+var customer = ["harsh", "parth", "tosif", "ruchit"]
+var customerProviders: [() -> String] = []
+func autoClosure( _ customerProvider : @autoclosure @escaping () -> String) {
+    customerProviders.append(customerProvider)
+}
+
+autoClosure(customer.remove(at: 0))
+autoClosure(customer.remove(at: 0))
+
+print("CustomreProviders count \(customerProviders.count)")
+for name in customerProviders {
+    print("Customer Providers name: \(name())")
+}
+
