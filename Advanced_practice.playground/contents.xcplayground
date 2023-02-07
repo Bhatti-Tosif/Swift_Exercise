@@ -3,5 +3,6 @@
     <pages>
         <page name='struct and class practice'/>
         <page name='Advance_Practice'/>
+        <page name='Proprties_practice'/>
     </pages>
 </playground>

@@ -152,25 +152,37 @@ var assignRawValue = CheckRaw(rawValue: 8)
 checkRawValue = CheckRaw.four.rawValue
 
 //Recursive enumration
-indirect enum CalculateValue {
+indirect enum CalculateExpression {
     case number(Int)
-    case addition(CalculateValue, CalculateValue)
-    case multiplication(CalculateValue, CalculateValue)
+    case addition(CalculateExpression, CalculateExpression)
+    case subtraction(CalculateExpression, CalculateExpression)
+    case multiplication(CalculateExpression, CalculateExpression)
+    case divison(CalculateExpression, CalculateExpression)
 }
+//expression : (10-2)*(1+3) = 32
+let ten = CalculateExpression.number(10)
+let two = CalculateExpression.number(2)
+let one = CalculateExpression.number(1)
+let three = CalculateExpression.number(3)
 
-let five = CalculateValue.number(5)
-let four = CalculateValue.number(4)
-let sum = CalculateValue.addition(five, four)
-let product = CalculateValue.multiplication(sum, CalculateValue.number(2))
+let minus = CalculateExpression.subtraction(ten, two)
+let sum = CalculateExpression.addition(one, three)
+let product = CalculateExpression.multiplication(minus, sum)
 
-func evaluate(_ expression: CalculateValue) -> Int {
+func evalute(_ expression: CalculateExpression) -> Int {
     switch expression {
     case let .number(value):
         return value
     case let .addition(left, right):
-        return evaluate(left) + evaluate(right)
+        return evalute(left) + evalute(right)
     case let .multiplication(left, right):
-        return evaluate(left) * evaluate(right)
+        return evalute(left) * evalute(right)
+    case let .subtraction(left, right):
+        return evalute(left) - evalute(right)
+    case let .divison(left, right):
+        return evalute(left) / evalute(right)
     }
 }
-print(evaluate(product))
+print(evalute(product))
+
+
