@@ -63,7 +63,7 @@ print("square.origin is now at \(square.origin.x) , \(square.origin.y)")
 //Read only computed Properties
 struct Multiply {
     var number1:Double, number2:Double
-    
+
     var ans: Double {
         get {                       //without get it can also work
             return number1 * number2
@@ -110,4 +110,77 @@ struct ValidUser {
 
 var user = ValidUser()
 user.userName = "harsh"
-user.userName
+print(user.userName)
+
+@propertyWrapper
+struct Capitalized {
+    private(set) var projectedValue: Bool
+    var wrappedValue: String {
+        didSet {
+            wrappedValue = wrappedValue.lowercased()
+            projectedValue = true
+        }
+    }
+    init(wrappedValue: String) {
+        self.wrappedValue = wrappedValue.uppercased()
+        self.projectedValue = false
+    }
+}
+
+struct User {
+    @Capitalized var firstName: String
+    @Capitalized var lastName: String
+}
+
+var user1 = User(firstName: "tosif", lastName: "bhatti")
+user1.lastName
+user1.lastName = "BHATT"
+print(user1.$lastName)
+
+// Type properties
+struct typeProperties {
+    static var storedName = "Simform"
+    static var computedName: String {
+        get {
+            return "Tosif"
+        }
+        set {
+            storedName = newValue
+        }
+    }
+}
+typeProperties.computedName = "bhatti"
+print(typeProperties.storedName)
+
+enum CheckStatic {
+    static var storedName = "Simform"
+    static var computedName: String {
+        return "Tosif"
+    }
+}
+CheckStatic.storedName
+CheckStatic.computedName
+
+class CheckStaticKey {
+    static var storedName = "Simform"
+    static var computedName: String {
+        return "tosif"
+    }
+    class var overridebleComputedName: String {
+        return "bhatti"
+    }
+}
+
+class ExtendAbove: CheckStaticKey {
+    override class var overridebleComputedName: String {
+        return "solanki"
+    }
+}
+
+CheckStaticKey.computedName
+CheckStaticKey.overridebleComputedName
+CheckStaticKey.overridebleComputedName
+ExtendAbove.overridebleComputedName
+
+
+
