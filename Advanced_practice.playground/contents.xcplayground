@@ -7,5 +7,7 @@
         <page name='Methods'/>
         <page name='Inheritance'/>
         <page name='Initialization'/>
+        <page name='Optional Chaining'/>
+        <page name='Error Handling'/>
     </pages>
 </playground>
