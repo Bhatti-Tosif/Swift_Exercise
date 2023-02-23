@@ -12,5 +12,6 @@
         <page name='Type Casting'/>
         <page name='Nested Type'/>
         <page name='Extensions'/>
+        <page name='Protocol'/>
     </pages>
 </playground>
