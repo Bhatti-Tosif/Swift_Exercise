@@ -99,8 +99,8 @@ stepCounter.totalStep = 30
 struct ValidationUser {
     var userName = "tosif"
     var wrappedValue: String {
-        get { return userName}
-        set { userName = newValue}
+        get { return userName }
+        set { userName = newValue }
     }
 }
 

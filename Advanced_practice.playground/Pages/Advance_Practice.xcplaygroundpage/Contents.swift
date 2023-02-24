@@ -1,92 +1,92 @@
-////SET
-////A set stores distinct values of the same type in a collection with no defined ordering
-//var intSet =  Set<Int>()
-//
-//intSet.insert(20)
-//print(intSet)
-//
-//var strSet: Set = ["tosif", "ruchi", "parth"]
-//type(of: strSet)
-//strSet.insert("harsh")
-//print(strSet)
-//
-//if let member = strSet.remove("hars") {
-//    print("\(member) is out")
-//} else {
-//    print("not present")
+//SET
+//A set stores distinct values of the same type in a collection with no defined ordering
+var intSet =  Set<Int>()
+
+intSet.insert(20)
+print(intSet)
+
+var strSet: Set = ["tosif", "ruchi", "parth"]
+type(of: strSet)
+strSet.insert("harsh")
+print(strSet)
+
+if let member = strSet.remove("hars") {
+    print("\(member) is out")
+} else {
+    print("not present")
+}
+//guard let member = strSet.remove("harsh") else {
+//    return 0
 //}
-////guard let member = strSet.remove("harsh") else {
-////    return 0
-////}
-////print("\(member) is out")
-//
-//strSet.forEach {
-//    print($0.sorted())
-//}
-//
-//strSet.sorted().forEach {
-//    print($0)
-//}
-//let str: String?
-//str = "hello"
-////str = "bhatti"
-//
-//if strSet.contains("tosif") {
-//    print("It contain ")
-//} else {
-//    print("it not contain ")
-//}
+//print("\(member) is out")
+
+strSet.forEach {
+    print($0.sorted())
+}
+
+strSet.sorted().forEach {
+    print($0)
+}
+let str: String?
+str = "hello"
+//str = "bhatti"
+
+if strSet.contains("tosif") {
+    print("It contain ")
+} else {
+    print("it not contain ")
+}
 
 //Set Function
-//var age : Set<String> = ["20", "30", "45", "50", "ruchit"]
-//var name : Set = ["tosif", "parth", "ruchit"]
-//
-//age.union(name).sorted()
-//age.symmetricDifference(name)
-//age.subtracting(name)
-//age.intersection(name)
-//
-//age.remove("ruchit")
-//age == name
-//age.isSubset(of: name)
-//age.isStrictSubset(of: name)
-//age.isSuperset(of: name)
-//age.isDisjoint(with: name)
+var age : Set<String> = ["20", "30", "45", "50", "ruchit"]
+var name : Set = ["tosif", "parth", "ruchit"]
+
+age.union(name).sorted()
+age.symmetricDifference(name)
+age.subtracting(name)
+age.intersection(name)
+
+age.remove("ruchit")
+age == name
+age.isSubset(of: name)
+age.isStrictSubset(of: name)
+age.isSuperset(of: name)
+age.isDisjoint(with: name)
 
 //Function practice
 
-//func forReturnCheck(no1: Int, no2: Int) -> (Int, Int) {
-//    return (no2, no1)
-//}
-//print(forReturnCheck(no1: 23, no2: 45))
-//
-////function with optional return type
-//
-//func minMax(numberArray: [Int]) -> (min: Int, max: Int)? {
-//    var minValue = numberArray.min()
-//    var maxValue = numberArray.max()
-//    return ((minValue, maxValue) as! (min: Int, max: Int))
-//}
-//var intArray = [20, 30, 40, 56]
-//print(type(of: intArray.min()))
-//if let check = minMax(numberArray: intArray) {
-//    print("min is \(check) and max is \(check)")
-//}
-//
-////argument label or external parameter name
-//func argLabel(firstNumber a: Int, secondNumber b: Int) -> (no1: Int, no2: Int) {
-//    return (a, b)
-//}
-//print(argLabel(firstNumber: 23, secondNumber: 34))
+func forReturnCheck(no1: Int, no2: Int) -> (Int, Int) {
+    return (no2, no1)
+}
+print(forReturnCheck(no1: 23, no2: 45))
+
+//function with optional return type
+
+func minMax(numberArray: [Int]) -> (min: Int, max: Int)? {
+    var minValue = numberArray.min()
+    var maxValue = numberArray.max()
+    return ((minValue, maxValue) as! (min: Int, max: Int))
+}
+var intArray = [20, 30, 40, 56]
+print(type(of: intArray.min()))
+if let check = minMax(numberArray: intArray) {
+    print("min is \(check) and max is \(check)")
+}
+
+//argument label or external parameter name
+func argLabel(firstNumber a: Int, secondNumber b: Int) -> (no1: Int, no2: Int) {
+    return (a, b)
+}
+print(argLabel(firstNumber: 23, secondNumber: 34))
 //Veriadic function
-//func veriadicFunc<N>(member : N...) {
-//    member.forEach { N in
-//        print(N)
-//    }
-//}
-//veriadicFunc(member: 3, 4, 5, 5)
-//veriadicFunc(member: "hello", "hii")
-////veriadicFunc(member: "hello", 45, 56)
+func veriadicFunc<Tosif>(a: Int ,member : Tosif... , b: Int ) {
+    member.forEach { Tosif in
+        print(Tosif, a, b)
+    }
+}
+veriadicFunc(a: 10 ,member: 3, 4, 5, 5, b: 20)
+veriadicFunc(a: 20 ,member: "hello", "hii", b:25)
+//veriadicFunc(member: "hello", 45, 56)
 func strwithCount(str: String) -> Int {
     print(str)
     return str.count
